@@ -71,7 +71,7 @@ public:
 	~Lis() { uncreate(); } //소멸자
 
 	//멤버 함수
-	void push_back(cosnt T& t);
+	void push_back(const T& t);
 	size_type size() const { return s; }
 
 	//반복자 함수
@@ -102,8 +102,9 @@ template<class T>
 void Lis<T>::push_back(const T& t) {
 	Node<T>* node = new Node<T>(t);
 
-	if (s == 0)
+	if (s == 0) {
 		b = e = node;
+	}
 	else {
 		e->next = node;
 		node->prev = e;
@@ -140,8 +141,5 @@ void Lis<T>::uncreate() {
 	b = e = 0;
 	s = 0;
 }
-
-
-
 #endif // !GUARD_LIS_H
 
